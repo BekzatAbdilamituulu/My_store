@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block carousel %}
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<section class="main-content">
+    <div class="container">
+      <div class="row">
+        {% for cr in products  %}
+        <div class="col-lg-4 col-sm-6 mb-3">
+          <div class="product-card">
+            <div class="product-thumb">
+              {% if cr.images %}
+              <a href="#"><img src="{{ cr.images.url }}" alt="{{ cr.title }}"></a>
+              {% endif %}
+            </div>
+            <div class="product-details">
+              <h4><a href="{{ cr.get_absolute_url }}">{{ cr.title }}</a></h4>
+              <p>{{ cr.description }}</p>
+              <div class="product-bottom-details d-flex justify-content-between">
+                <div class="product-price">
+                  <small>$23.3</small> {{ cr.price }} som
+                </div>
+                <div class="product-links">
+                  <a href="#"><i class="fa-regular fa-heart"></i></a>
+                  <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="d-grid gap-2">
+      <a class="btn btn-outline-secondary btn-lg" href="{% url 'home' %}" role="button">Home</a>
+    </div>
+  </section>
+
+{% endblock %}

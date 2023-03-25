@@ -1,0 +1,15 @@
+{% extends "base1.html" %}
+{% block carousel %}
+{% endblock %}
+{% block content %}
+<h1>You are loged out</h1>
+<style>
+    h1 {
+        text-align: center;
+    }
+</style>
+<div class="d-grid gap-2">
+    <a class="btn btn-outline-secondary btn-lg" href="{% url 'login' %}" role="button">Log In</a>
+    <a class="btn btn-outline-secondary btn-lg" href="{% url 'home' %}" role="button">Home</a>
+  </div>
+{% endblock %}
