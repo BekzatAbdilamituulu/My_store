@@ -76,19 +76,21 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <div>
-                    {% with total_item=cart|length %}
-                    {% if cart|length > 0 %}
-                    <a href="{% url 'cart:cart_detail'%}">{{ cart.cou }} шт. 
-                      Обшая стоимость: {{ cart.get_total_price }} Сом</a>
-                    {% else %}
-                      Корзинка пуста
-                    {% endif %}
-                    {% endwith %}
-                  </div>
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td><img src="" alt="image"></td>
+                        <td><a href="#"></a></td>
+                        <td></td>
+                        <td></td>
+
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
               </div>
             </div>

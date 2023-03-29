@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'viewapp.apps.ViewappConfig',
     'users.apps.UsersConfig',
+    'cart.apps.CartConfig',
     ]
 LOGIN_REDIRECT_URL = 'home'
+
 
 
 MIDDLEWARE = [
@@ -59,7 +61,10 @@ ROOT_URLCONF = 'store.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates/viewapp')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/viewapp'),
+            os.path.join(BASE_DIR, 'cart/templates/cart'),
+            os.path.join(BASE_DIR, 'templates/users'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -126,6 +132,7 @@ STATICFILES_DIRS= [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CART_SESSION_ID = 'cart'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

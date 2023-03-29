@@ -4,7 +4,7 @@ from .models import Products, Categories
 from django.urls import reverse_lazy
 from .forms import *
 from .models import *
-
+from cart.forms import CartAddProductForm
 
 
 menu = [{'title': "О сайте", 'url_name': 'about'},
@@ -28,9 +28,15 @@ def contact(request):
     return HttpResponse('Обратная связь')
 
 def show_post(request, post_id):
-    context = {}
-    context['data']= Products.objects.get(id=post_id)
-    return render(request, 'viewapp/detail.html', context)
+    contexts = Products.objects.get(id=post_id)
+    cart_product_form = CartAddProductForm()
+    context = {
+        'data': contexts,
+        'cart_product_form': cart_product_form,
+    } 
+    
+    
+    return render(request, 'viewapp/detail.html', context=context)
 
 def category_detail(request, cat_id):
     cat = Categories.objects.get(id=cat_id)
