@@ -1,6 +1,10 @@
 from django.db import models
 from django.urls import reverse
 
+
+# add like 
+
+
 class Products(models.Model):
     title = models.CharField(max_length=100, verbose_name='Товар')
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
@@ -11,8 +15,8 @@ class Products(models.Model):
     data_upload = models.DateField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
     data_upgrade = models.DateField(auto_now_add=True, verbose_name='Дата обновления')
     images = models.ImageField(upload_to='img/', default = 'img/None/no-img.jpg', verbose_name='Фото')
-    categories = models.ForeignKey('Categories', null=True, on_delete=models.PROTECT, verbose_name='Категория')
-    
+    categories = models.ForeignKey('Categories', null=True, on_delete=models.PROTECT, verbose_name='Категория') 
+ 
     def get_absolute_url(self):
         return reverse('post', kwargs={'post_id': self.pk})
     
@@ -23,7 +27,6 @@ class Meta:
     verbose_name = 'Продукт'
     verbose_name_plural = 'Продукты'
     ordering = ['id']
-
 class Categories(models.Model):
     title = models.CharField(max_length=30, verbose_name='Категория')
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
@@ -45,6 +48,7 @@ class Users(models.Model):
     password = models.CharField(max_length=20, verbose_name='Пароль')
     email = models.EmailField()
     address = models.CharField(max_length=128, verbose_name='Адрес')
+
     def __str__(self):
 	    return self.uname
 

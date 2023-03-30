@@ -7,6 +7,8 @@ from .models import *
 from cart.forms import CartAddProductForm
 
 
+
+
 menu = [{'title': "О сайте", 'url_name': 'about'},
         {'title': 'Обратная связь', 'url_name': 'contact'},
         {'title': 'Войти', 'url_name': 'login'
@@ -34,8 +36,6 @@ def show_post(request, post_id):
         'data': contexts,
         'cart_product_form': cart_product_form,
     } 
-    
-    
     return render(request, 'viewapp/detail.html', context=context)
 
 def category_detail(request, cat_id):
@@ -43,6 +43,5 @@ def category_detail(request, cat_id):
     products = Products.objects.filter(categories__exact=cat)
 
     return render (request, 'viewapp/category.html', {'cat': cat, 'products': products})
-
 
 
