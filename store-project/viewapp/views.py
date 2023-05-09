@@ -45,3 +45,11 @@ def category_detail(request, cat_id):
     return render (request, 'viewapp/category.html', {'cat': cat, 'products': products})
 
 
+def search(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        blogs = Products.objects.filter(title__contains=searched)
+        return render(request, "viewapp/search.html", {'searched':searched, 'blogs':blogs})
+    else:
+        return render(request, "viewapp/search.html", {})
+

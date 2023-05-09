@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Page {% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+{% if searched %}
+<section class="main-content">
+    <div class="container">
+      <div class="row">
+        {% for blog in blogs %}
+        <div class="col-lg-4 col-sm-6 mb-3">
+          <div class="product-card">
+            <div class="product-thumb">
+              {% if blog.images %}
+              <a href="{{ blog.get_absolute_url }}"><img src="{{ blog.images.url }}" alt="{{ blog.title }}"></a>
+              {% endif %}
+            </div>
+            <div class="product-details">
+              
+              <h4><a href="#">{{ blog.title }}</a></h4>
+              <p>{{ blog.description }}</p>
+              <div class="product-bottom-details d-flex justify-content-between">
+                <div class="product-price">
+                  <small>$23.3</small> {{ blog.price }} som
+              
+                </div>
+                <div class="product-links">
+                  <a href="#"><i class="fa-regular fa-heart"></i></a>
+                  <a href="{{ blog.get_absolute_url }}"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% else %}
+<h1>You forgot to search</h1>
+{% endif %}
+{% endblock %}
